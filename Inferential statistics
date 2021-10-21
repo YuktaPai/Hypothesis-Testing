@@ -1,0 +1,20 @@
+# Business Problem: To check whether any significant difference between diameters of any two cutlet units.
+# We take 2 sample t test as just one variable under two conditions are assessed.
+
+#Ho: No significant difference in diameters of cutlets produced by two units, mean of sample from unit1 = mean of sample from unit 2
+##Default condition with no action required
+#Ha: There is a difference between the mean diameters of two samples
+##Condition in which action is required
+
+import pandas as pd 
+import scipy from scipy 
+import stats 
+#loading csv file 
+cutlets = pd.read_csv('C:/Users/17pol/Downloads/Cutlets.csv') 
+cutlets = cutlets.iloc[:,0:2]                                 #dataframing required columns 
+cutlets.columns = 'Unit A','Unit B'                           # Labeling 
+print(cutlets.columns) 
+print(scipy.stats.anderson(cutlets['Unit A'], dist = 'norm')) #checking normality with anderson test
+print(scipy.stats.anderson(cutlets['Unit B'], dist = 'norm'))
+
+stats.ttest_ind(cutlets['Unit A'], cutlets['Unit B'], nan_policy = 'omit') #paired t test
