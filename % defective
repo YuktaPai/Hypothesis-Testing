@@ -1,0 +1,19 @@
+# Statistical Test: As both the input and the output are categorical and number of samples is 4, we chose chi square test of independence for this business problem.
+
+import pandas as pd # reading data
+orders = pd.read_csv('C:/Users/17pol/Downloads/Costomer+OrderForm.csv')
+orders.head() #understanding data
+orders.shape
+orders.dtypes
+India_D = orders['India'].value_counts() # preparing a contingency table
+Indonesia_D = orders['Indonesia'].value_counts()
+Malta_D = orders['Malta'].value_counts()
+Phillippines_D = orders['Phillippines'].value_counts()
+List = [India_D,Indonesia_D, Malta_D, Phillippines_D ]
+Count = pd.DataFrame(List)
+Count
+from scipy import stats #applying the test statistic
+stats.chi2_contingency(Count)
+
+#Output: (3.8589606858203545, 0.2771020991233144, 3, array([[271.75, 28.25], [271.75, 28.25], [271.75, 28.25], [271.75, 28.25]]))
+#Result: p-value = 0.277 >0.05. Thus, accept H0. The defective % does not vary with centre
