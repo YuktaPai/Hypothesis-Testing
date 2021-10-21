@@ -1,0 +1,8 @@
+#We take one way ANOVA test as we have 4 samples laboratory 1, laboratory 2,laboratory 3, laboratory 4 for one variable TAT
+# code snippet
+import pandas as pd
+lab_tat =pd.read_csv('C:/Users/17pol/Downloads/LabTAT.csv')                             #read file
+import scipy
+from scipy import stats
+import scipy.stats as stats
+stats.f_oneway(lab_tat.iloc[:,0],lab_tat.iloc[:,1],lab_tat.iloc[:,2],lab_tat.iloc[:,3]) #one way anova
