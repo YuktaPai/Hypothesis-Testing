@@ -1,0 +1,12 @@
+#we do chi-square test
+
+#Loading file
+import pandas as pd
+mlfl = pd.read_csv('C:/Users/17pol/Downloads/BuyerRatio.csv')
+
+mlfl = mlfl.iloc[:,1:]
+from scipy import stats
+stats.chi2_contingency(mlfl, correction=False)      #chi-square test
+
+#Output: (1.595945538661058, 0.6603094907091882, 3, array([[ 42.76531299, 146.81287862, 131.11756787, 72.30424052], [ 442.23468701, 1518.18712138, 1355.88243213, 747.69575948]]))
+#Result: p-value = 0.66 > 0.05. Thus, We accept H0. There is no difference in Male to Female Buyer ratio.
